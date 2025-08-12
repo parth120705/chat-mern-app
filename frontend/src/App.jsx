@@ -12,10 +12,12 @@ import { Toaster } from 'react-hot-toast'
 
 
 import './App.css'
+import { useThemeStore } from './store/useThemeStore.js'
 import { useAuthStore } from './store/useAuthStore.js'
 
 function App() {
   const {authUser,checkAuth,isCheckingAuth}=useAuthStore();
+  const {theme}=useThemeStore()
 
   useEffect(()=>{
     checkAuth();
@@ -31,7 +33,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div data-theme={theme}>
         <Navbar/>
         <Routes>
           <Route path='/' element={authUser?<HomePage/>:<Navigate to="/login"/>}/>
