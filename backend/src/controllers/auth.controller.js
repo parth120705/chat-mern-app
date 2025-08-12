@@ -89,7 +89,7 @@ export const logout=async (req,res)=>{
 export const updateProfile=async(req,res)=>{
     try {
         const {profilepic}=req.body;
-        const userId=req.body._id;
+        const userId=req.user._id;
         if(!profilepic){
             return res.status(400).json({message:"Profile pic is required"})
         }
